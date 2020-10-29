@@ -2,9 +2,9 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import axios from 'axios';
 
 const GetCurrent: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    const query = (req.query.query);
+    const location = (req.query.location);
 
-    const res = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env['WEATHER_API_KEY']}&q=${query}`);
+    const res = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env['WEATHER_API_KEY']}&q=${location}`);
     context.res = {
         status: res.status,
         body: res.data
