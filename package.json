@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@capacitor/core": "2.4.2",
+    "@ionic/cli": "^6.12.1",
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
     "axios": "^0.21.0",
@@ -39,5 +40,5 @@
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
   },
-  "description": "An Ionic project"
+  "description": "Example Ionic Vue App"
 }

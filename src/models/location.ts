@@ -1,12 +1,10 @@
-export default class Location {
-    constructor(
-        public name: string,
-        public region: string,
-        public country: string,
-        public lat: number,
-        public lon: number,
-        public tz_id: number,
-        public localtime_epoch: number,
-        public localtime: string
-    ) {}
+export default interface Location {
+        name: string;
+        region: string;
+        country: string;
+        lat: number;
+        lon: number;
+        tz_id: number;
+        localtime_epoch: number;
+        localtime: string;
 }

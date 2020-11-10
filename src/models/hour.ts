@@ -1,6 +1,6 @@
 import Condition from './condition';
 
-export default interface CurrentWeather {
+export default interface Hour {
     last_updated_epoch: number;
     last_updated: string;
     temp_c: number;

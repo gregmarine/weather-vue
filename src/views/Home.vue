@@ -2,7 +2,8 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Weather Vue</ion-title>
+        <ion-title slot="start">Weather Vue</ion-title>
+        <ion-searchbar v-model="query" @change="getCurrent"></ion-searchbar>
       </ion-toolbar>
     </ion-header>
     
@@ -14,38 +15,36 @@
       </ion-header>
     
       <div id="container">
-        <ion-button @click="getCurrent">
-          <ion-label>Click Me</ion-label>
-        </ion-button>
+
+        <CurrentWeather />
+        
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonLabel } from '@ionic/vue';
-import { defineComponent } from 'vue';
-import weather from '../controllers/weather';
+import { IonContent, IonHeader, IonPage, IonSearchbar, IonTitle, IonToolbar } from '@ionic/vue';
+import { defineComponent, ref } from 'vue';
+import CurrentWeather from '../components/CurrentWeather.vue';
+import useWeather from '../hooks/weather';
 
 export default defineComponent({
   name: 'Home',
   components: {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonButton,
-    IonLabel
+    IonContent, IonHeader, IonPage, IonSearchbar, IonTitle, IonToolbar,
+    CurrentWeather
   },
   setup() {
-    const { current } = weather();
+    const query = ref<string>('');
+    const { getCurrentWeather } = useWeather();
 
     const getCurrent = async () => {
-      await current('46231');
+      await getCurrentWeather(query.value);
     };
 
     return {
+      query,
       getCurrent
     };
   }
