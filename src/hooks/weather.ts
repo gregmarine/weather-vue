@@ -25,7 +25,7 @@ export default function () {
         });
     };
 
-    const getForecast = async (_query: string, _days: number) => {
+    const getForecastWeather = async (_query: string, _days: number) => {
         state.query = _query;
         axios.get(`${ API_URL }forecast.json?key=${ process.env.VUE_APP_WEATHER_API_KEY }&q=${ _query }&days=${ _days }`)
         .then(res => {
@@ -40,6 +40,7 @@ export default function () {
 
     return {
         ...toRefs(state),
-        getCurrentWeather
+        getCurrentWeather,
+        getForecastWeather
     };
 }
